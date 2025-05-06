@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Facility - SportSync</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation (Same as dashboard) -->
+    <nav class="bg-white shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-basketball-ball text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">SportSync</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center text-gray-700 hover:text-indigo-600">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-indigo-600">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Profile" class="w-8 h-8 rounded-full">
+                            <span>John Doe</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Same as dashboard) -->
+    <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg pt-16">
+        <nav class="mt-5 px-2">
+            <a href="dashboard.html" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-indigo-600 hover:bg-indigo-50">
+                <i class="fas fa-home mr-4"></i>
+                Dashboard
+            </a>
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-indigo-600 bg-indigo-50">
+                <i class="fas fa-calendar-alt mr-4 text-indigo-600"></i>
+                My Bookings
+            </a>
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-indigo-600 hover:bg-indigo-50">
+                <i class="fas fa-graduation-cap mr-4"></i>
+                Academies
+            </a>
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-indigo-600 hover:bg-indigo-50">
+                <i class="fas fa-users mr-4"></i>
+                My Teams
+            </a>
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-indigo-600 hover:bg-indigo-50">
+                <i class="fas fa-wallet mr-4"></i>
+                Payments
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="ml-64 pt-16">
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Booking Steps -->
+            <div class="px-4 sm:px-0">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900">Book a Facility</h2>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">Step 1 of 3</span>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full">
+                                <div class="w-1/3 h-full bg-indigo-600 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Select Facility -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Select Facility Type</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="relative facility-option" id="football">
+                                <input type="radio" name="facility" id="football-radio" class="peer hidden" onclick="selectFacility('football')">
+                                <label for="football-radio" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-futbol text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Football Ground</h4>
+                                            <p class="text-sm text-gray-500">From ₹1000/hour</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative facility-option" id="cricket">
+                                <input type="radio" name="facility" id="cricket-radio" class="peer hidden" onclick="selectFacility('cricket')">
+                                <label for="cricket-radio" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-baseball-ball text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Cricket Ground</h4>
+                                            <p class="text-sm text-gray-500">From ₹1500/hour</p>
+                                            <div class="mt-2 text-xs text-gray-500">
+                                                <ul class="list-disc list-inside">
+                                                    <li>Professional pitch</li>
+                                                    <li>Practice nets</li>
+                                                    <li>Bowling machine</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative facility-option" id="tennis">
+                                <input type="radio" name="facility" id="tennis-radio" class="peer hidden" onclick="selectFacility('tennis')">
+                                <label for="tennis-radio" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-table-tennis text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Tennis Court</h4>
+                                            <p class="text-sm text-gray-500">From ₹800/hour</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Select Date & Time -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Select Date & Time</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                                <input type="date" id="booking-date" onchange="handleDateChange(event)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Time Slot</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button type="button" id="time-5" class="time-slot px-4 py-2 border-2 border-gray-200 rounded-md hover:border-indigo-500 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="selectTimeSlot(5)">
+                                        5:00 PM
+                                    </button>
+                                    <button type="button" id="time-6" class="time-slot px-4 py-2 border-2 border-gray-200 rounded-md hover:border-indigo-500 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="selectTimeSlot(6)">
+                                        6:00 PM
+                                    </button>
+                                    <button type="button" id="time-7" class="time-slot px-4 py-2 border-2 border-gray-200 rounded-md hover:border-indigo-500 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="selectTimeSlot(7)">
+                                        7:00 PM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Equipment Selection (for Cricket) -->
+                    <div id="cricket-equipment" class="mb-8 hidden">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Additional Equipment</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="relative">
+                                <input type="checkbox" id="bowling-machine" name="equipment" value="bowling-machine" class="peer hidden">
+                                <label for="bowling-machine" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-cog text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Bowling Machine</h4>
+                                            <p class="text-sm text-gray-500">+₹500/hour</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative">
+                                <input type="checkbox" id="cricket-kit" name="equipment" value="cricket-kit" class="peer hidden">
+                                <label for="cricket-kit" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-briefcase text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Cricket Kit</h4>
+                                            <p class="text-sm text-gray-500">+₹300/hour</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative">
+                                <input type="checkbox" id="practice-nets" name="equipment" value="practice-nets" class="peer hidden">
+                                <label for="practice-nets" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-network-wired text-2xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Practice Nets</h4>
+                                            <p class="text-sm text-gray-500">+₹200/hour</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Payment Details -->
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Payment Details</h3>
+                        <div id="booking-summary" class="bg-gray-50 p-4 rounded-lg mb-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Facility Charges</span>
+                                <span class="font-medium">₹1000</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">GST (18%)</span>
+                                <span class="font-medium">₹180</span>
+                            </div>
+                            <div class="flex justify-between pt-2 border-t">
+                                <span class="font-medium">Total Amount</span>
+                                <span class="font-bold text-indigo-600">₹1180</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <input type="radio" name="payment" id="wallet" class="peer hidden">
+                                <label for="wallet" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-wallet text-xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Wallet Balance</h4>
+                                            <p class="text-sm text-gray-500">Available: ₹2000</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative">
+                                <input type="radio" name="payment" id="card" class="peer hidden">
+                                <label for="card" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-credit-card text-xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">Credit/Debit Card</h4>
+                                            <p class="text-sm text-gray-500">All major cards accepted</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="relative">
+                                <input type="radio" name="payment" id="upi" class="peer hidden">
+                                <label for="upi" class="block p-4 bg-white border-2 border-gray-200 rounded-lg cursor-pointer hover:border-indigo-500 peer-checked:border-indigo-500 peer-checked:bg-indigo-50">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-mobile-alt text-xl text-indigo-600 mr-3"></i>
+                                        <div>
+                                            <h4 class="font-medium">UPI Payment</h4>
+                                            <p class="text-sm text-gray-500">Google Pay, PhonePe, etc.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-8 flex justify-end space-x-4">
+                        <button class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Cancel
+                        </button>
+                        <button class="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Confirm Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>
